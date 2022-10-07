@@ -1,0 +1,298 @@
+% ******************************************************************************
+% ****************************** Custom Margin *********************************
+
+% Add `custommargin' in the document class options to use this section
+% Set {innerside margin / outerside margin / topmargin / bottom margin}  and
+% other page dimensions
+\ifsetCustomMargin
+  \RequirePackage[left=37mm,right=30mm,top=35mm,bottom=30mm]{geometry}
+  \setFancyHdr % To apply fancy header after geometry package is loaded
+\fi
+
+% Add spaces between paragraphs
+%\setlength{\parskip}{0.5em}
+% Ragged bottom avoids extra whitespaces between paragraphs
+\raggedbottom
+% To remove the excess top spacing for enumeration, list and description
+%\usepackage{enumitem}
+%\setlist[enumerate,itemize,description]{topsep=0em}
+
+% *****************************************************************************
+% ******************* Fonts (like different typewriter fonts etc.)*************
+
+% Add `customfont' in the document class option to use this section
+
+\ifsetCustomFont
+  % Set your custom font here and use `customfont' in options. Leave empty to
+  % load computer modern font (default LaTeX font).
+  %\RequirePackage{helvet}
+
+  % For use with XeLaTeX
+  %  \setmainfont[
+  %    Path              = ./libertine/opentype/,
+  %    Extension         = .otf,
+  %    UprightFont = LinLibertine_R,
+  %    BoldFont = LinLibertine_RZ, % Linux Libertine O Regular Semibold
+  %    ItalicFont = LinLibertine_RI,
+  %    BoldItalicFont = LinLibertine_RZI, % Linux Libertine O Regular Semibold Italic
+  %  ]
+  %  {libertine}
+  %  % load font from system font
+  %  \newfontfamily\libertinesystemfont{Linux Libertine O}
+\fi
+
+% *****************************************************************************
+% **************************** Custom Packages ********************************
+
+% ************************* Algorithms and Pseudocode **************************
+
+\usepackage[all]{xy}
+\usepackage{stmaryrd}
+\usepackage{acronym}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{csquotes}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{xspace}
+\usepackage{listings}
+\usepackage{adjustbox}
+\usepackage{graphicx}
+\usepackage{lscape}
+\usepackage{tabularx}\usepackage{wrapfig}
+% \usepackage[colorlinks=true,urlcolor=black]{hyperref}
+
+\usetikzlibrary{positioning, calc, shapes, arrows.meta, decorations.pathreplacing}
+
+\mathchardef\myhyphen="2D
+
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{forestgreen}{rgb}{0.13, 0.55, 0.13}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    %numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    %numbers=left,
+    %numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\hyphenation{iden-ti-fi-ca-tion}
+\hyphenation{iden-ti-fi-ca-tion-based}
+
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+
+\newtheorem{lemma}{Lemma}
+
+% ********************Captions and Hyperreferencing / URL **********************
+
+% Captions: This makes captions of figures use a boldfaced small font.
+%\RequirePackage[small,bf]{caption}
+
+\RequirePackage[labelsep=space,tableposition=top]{caption}
+\renewcommand{\figurename}{Fig.} %to support older versions of captions.sty
+
+
+% *************************** Graphics and figures *****************************
+
+%\usepackage{rotating}
+%\usepackage{wrapfig}
+
+% Uncomment the following two lines to force Latex to place the figure.
+% Use [H] when including graphics. Note 'H' instead of 'h'
+%\usepackage{float}
+%\restylefloat{figure}
+
+% Subcaption package is also available in the sty folder you can use that by
+% uncommenting the following line
+% This is for people stuck with older versions of texlive
+%\usepackage{sty/caption/subcaption}
+\usepackage{subcaption}
+
+% ********************************** Tables ************************************
+\usepackage{booktabs} % For professional looking tables
+\usepackage{multirow}
+
+%\usepackage{multicol}
+%\usepackage{longtable}
+%\usepackage{tabularx}
+
+
+% *********************************** SI Units *********************************
+\usepackage{siunitx} % use this package module for SI units
+
+
+% ******************************* Line Spacing *********************************
+
+% Choose linespacing as appropriate. Default is one-half line spacing as per the
+% University guidelines
+
+% \doublespacing
+% \onehalfspacing
+% \singlespacing
+
+
+% ************************ Formatting / Footnote *******************************
+
+% Don't break enumeration (etc.) across pages in an ugly manner (default 10000)
+%\clubpenalty=500
+%\widowpenalty=500
+
+%\usepackage[perpage]{footmisc} %Range of footnote options
+
+
+% *****************************************************************************
+% *************************** Bibliography  and References ********************
+
+%\usepackage{cleveref} %Referencing without need to explicitly state fig /table
+
+% Add `custombib' in the document class option to use this section
+\ifuseCustomBib
+   \RequirePackage[square, sort, numbers, authoryear]{natbib} % CustomBib
+
+% If you would like to use biblatex for your reference management, as opposed to the default `natbibpackage` pass the option `custombib` in the document class. Comment out the previous line to make sure you don't load the natbib package. Uncomment the following lines and specify the location of references.bib file
+
+%\RequirePackage[backend=biber, style=numeric-comp, citestyle=numeric, sorting=nty, natbib=true]{biblatex}
+%\bibliography{References/references} %Location of references.bib only for biblatex
+
+\fi
+
+% changes the default name `Bibliography` -> `References'
+\renewcommand{\bibname}{References}
+
+
+% ******************************************************************************
+% ************************* User Defined Commands ******************************
+% ******************************************************************************
+
+% *********** To change the name of Table of Contents / LOF and LOT ************
+
+\newcommand{\adv}{\mathcal{A}dv}
+
+% sets
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\W}{\mathcal{W}}
+\newcommand{\Z}{\mathcal{Z}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\R}{\mathcal{R}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\E}{\mathsf{E}}
+%
+\newcommand{\ie}{{i.e.}}
+\newcommand{\eg}{{e.g.}}
+\newcommand{\etal}{et al.}
+\newcommand{\nb}{{\bf N.B.:}~}
+%
+\newcommand{\framework}{\mathtt{TrackDev}}
+\newcommand{\funct}{\mathtt{IDnServe}}
+\newcommand{\prot}{\mathtt{IDed\myhyphen Prot}}
+\newcommand{\idfunc}{identification functionality\xspace}
+
+%normal trackability
+\newcommand{\staticNoTrack}{\mathtt{St \myhyphen NoTrack}} % static non-trackability
+\newcommand{\universalStaticNoTrack}{\mathtt{\forall \myhyphen St \myhyphen NoTrack}} %  static universal non-trackability
+
+\newcommand{\staticTrack}{\mathtt{St \myhyphen Track}} % static trackability attack
+\newcommand{\existentialStaticTrack}{\mathtt{\exists \myhyphen St \myhyphen Track}} % static existential trackability attack
+
+\newcommand{\adaptiveNoTrack}{\mathtt{Ad \myhyphen NoTrack}} % adaptive non-trackability
+\newcommand{\existentialAdaptiveNoTrack}{\mathtt{\exists \myhyphen Ad \myhyphen NoTrack}} % adaptive existential non-trackability
+\newcommand{\universalAdaptiveNoTrack}{\mathtt{\forall \myhyphen Ad \myhyphen NoTrack}} % adaptive universal non-trackability
+
+\newcommand{\adaptiveTrack}{\mathtt{Ad \myhyphen Track}}
+\newcommand{\universalAdaptiveTrack}{\mathtt{\forall \myhyphen Ad \myhyphen Track}} % adaptive universal trackability attack
+
+%session trackability
+\newcommand{\staticSesNoTrack}{\mathtt{St \myhyphen SesNoTrack}} % static session non-trackability
+\newcommand{\universalStaticSesNoTrack}{\mathtt{\forall \myhyphen St \myhyphen SesNoTrack}} % universal static session non-trackability
+
+\newcommand{\adaptiveSesNoTrack}{\mathtt{Ad \myhyphen SesNoTrack}} % adaptive session non-trackability
+\newcommand{\existentialAdaptiveSesNoTrack}{\mathtt{\exists \myhyphen Ad \myhyphen SesNoTrack}} % adaptive existential session non-trackability
+
+\newcommand{\staticSesTrack}{\mathtt{St \myhyphen SesTrack}} % static session trackability attack
+\newcommand{\existentialStaticSesTrack}{\mathtt{\exists \myhyphen St \myhyphen SesTrack}} % static existential session trackability attack
+\newcommand{\universalStaticSesTrack}{\mathtt{\forall \myhyphen St \myhyphen SesTrack}} % static universal session trackability attack
+
+\newcommand{\adaptiveSesTrack}{\mathtt{Ad \myhyphen SesTrack}} % session adaptive trackability attack
+\newcommand{\universalAdaptiveSesTrack}{\mathtt{\forall \myhyphen Ad \myhyphen SesTrack}} % adaptive universal session trackability attack
+
+\newcommand{\notimpliesrl}{%
+  \mathrel{{\ooalign{\hidewidth$\not\phantom{=}$\hidewidth\cr$\Longleftarrow$}}}}
+  
+  \newcommand{\notimplies}{%
+  \mathrel{{\ooalign{\hidewidth$\not\phantom{=}$\hidewidth\cr$\implies$}}}}
+  
+    \newcommand{\notuparrow}{%
+  \mathrel{{\ooalign{\hidewidth$\not\phantom{=}$\hidewidth\cr$\Uparrow$}}}}
+  
+  
+    
+    \newcommand{\notdownarrow}{%
+  \mathrel{{\ooalign{\hidewidth$\not\phantom{=}$\hidewidth\cr$\Downarrow$}}}}
+  
+  %attack
+  \newcommand{\AttackL}{\texttt{LoRaWAN}-\texttt{Attack}}
+  
+%
+\newcommand{\ioana}[1]{\textcolor{blue}{Ioana: #1}}
+\newcommand{\ksenia}[1]{\textcolor{orange}{Ksenia: #1}}
+\newcommand{\pb}[1]{\textcolor{red}{PB: #1}}
+\newcommand{\todo}[1]{\textcolor{red}{TODO: #1}}
+
+
+% ********************************* Appendix ***********************************
+
+% The default value of both \appendixtocname and \appendixpagename is `Appendices'. These names can all be changed via:
+
+%\renewcommand{\appendixtocname}{List of appendices}
+%\renewcommand{\appendixname}{Appndx}
+
+% *********************** Configure Draft Mode **********************************
+
+% Uncomment to disable figures in `draft'
+%\setkeys{Gin}{draft=true}  % set draft to false to enable figures in `draft'
+
+% These options are active only during the draft mode
+% Default text is "Draft"
+%\SetDraftText{DRAFT}
+
+% Default Watermark location is top. Location (top/bottom)
+%\SetDraftWMPosition{bottom}
+
+% Draft Version - default is v1.0
+\SetDraftVersion{v1.0}
+
+% Draft Text grayscale value (should be between 0-black and 1-white)
+% Default value is 0.75
+%\SetDraftGrayScale{0.8}
+
+
+% ******************************** Todo Notes **********************************
+%% Uncomment the following lines to have todonotes.
+
+%\ifsetDraft
+%	\usepackage[colorinlistoftodos]{todonotes}
+%	\newcommand{\mynote}[1]{\todo[author=kks32,size=\small,inline,color=green!40]{#1}}
+%\else
+%	\newcommand{\mynote}[1]{}
+%	\newcommand{\listoftodos}{}
+%\fi
+
+% Example todo: \mynote{Hey! I have a note}
